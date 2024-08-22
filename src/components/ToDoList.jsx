@@ -92,7 +92,7 @@ export default function ToDoList() {
           />
           <span className='checkmark'></span>
           <p
-            className={`to-do-list-item-text ${item.complete && 'crossed-out'}`}
+            className={`to-do-list-item-text ${item.complete ? 'crossed-out' : ''}`}
           >
             {item.text}
           </p>
@@ -115,10 +115,13 @@ export default function ToDoList() {
         <label className='new-item-label'>
           <img src='./images/add-item.svg' className={`add-item-icon`} />
           <input
+          value={newItemInput}
             className='new-item-input'
             type='text'
             onKeyDown={handleEnter}
             onChange={handleNewItemInputChange}
+            onFocus={toggleInputFocus}
+            onBlur={toggleInputFocus}
           />
         </label>
       </div>
